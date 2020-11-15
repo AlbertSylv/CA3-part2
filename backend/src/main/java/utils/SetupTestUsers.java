@@ -1,6 +1,7 @@
 package utils;
 
 
+import entities.Dog;
 import entities.Role;
 import entities.User;
 
@@ -24,6 +25,14 @@ public class SetupTestUsers {
     User admin = new User("admin", "test2");
     User both = new User("user_admin", "test2");
     
+    
+    Dog userDog = new Dog("Mastiff", "male", 3, "Gerard");
+    Dog userDog2 = new Dog("Boxer", "female", 12, "Bulma");
+    Dog bothDog = new Dog("Bouvier", "male", 7, "Mr Burns");
+    
+    user.addDog(userDog);
+    user.addDog(userDog2);
+    both.addDog(bothDog);
 
     if(admin.getUserPass().equals("test")||user.getUserPass().equals("test")||both.getUserPass().equals("test"))
       throw new UnsupportedOperationException("You have not changed the passwords");

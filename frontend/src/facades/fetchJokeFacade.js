@@ -8,5 +8,6 @@ function jokeFetcher() {
   };
   return { fetchData };
 }
-const facade = jokeFetcher();
-export default facade;
+
+const jokeFacade = jokeFetcher();
+export default jokeFacade;

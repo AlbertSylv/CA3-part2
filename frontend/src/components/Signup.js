@@ -7,6 +7,7 @@ function Signup({ login, user }) {
   const init = { username: "", password1: "", password2: "" };
   const [loginCredentials, setLoginCredentials] = useState(init);
   const [error, setError] = useState("");
+  const [signUpMsg, setSignUpMsg] = useState("");
 
   const performLogin = (evt) => {
     evt.preventDefault();
@@ -18,7 +19,10 @@ function Signup({ login, user }) {
       if (loginCredentials.password1 === loginCredentials.password2) {
         facade
           .signup(loginCredentials.username, loginCredentials.password1)
-          .then((data) => console.log(data))
+          .then(
+            (data) => console.log(data),
+            setSignUpMsg("Your account was signed up succesfully!")
+          )
           .catch((err) => {
             if (err.status) {
               err.fullError.then((e) => {
@@ -32,7 +36,7 @@ function Signup({ login, user }) {
         setError("Password doesn't match");
       }
     } else {
-        setError("You must write in all fields");
+      setError("You must write in all fields");
     }
   };
   const onChange = (evt) => {
@@ -76,10 +80,11 @@ function Signup({ login, user }) {
             required
           />
         </div>
-        <button onClick={performLogin}>Login</button>
+        <button onClick={performLogin}>Sign up</button>
       </form>
       {user !== "Loading..." ? user : <> </>}
-      <Link to="/signup">Sign-up</Link>
+      <Link to="/signin">Already have an account?</Link>
+      <p>{signUpMsg}</p>
       <p>{error}</p>
     </div>
   );

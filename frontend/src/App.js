@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
 import facade from "./facades/LoginFacade";
 import Home from "./components/Home";
+import Breed from "./components/Breed";
 import Signup from "./components/Signup";
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <Home />
+          </Route>
+          <Route path="/breeds" exact>
+            <Breed />
           </Route>
           <Route path="/services" />
           <Route path="/products" />

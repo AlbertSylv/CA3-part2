@@ -39,7 +39,7 @@ function Navbar() {
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            BANDEN
+            DogStuff
             <i className="fab fa-typo3" />
           </Link>
           <div className="menu-icon" onClick={handleClick}>
@@ -48,6 +48,7 @@ function Navbar() {
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <LinkMaker text="Home" path="" />
             <LinkMaker text="Services" path="services" />
+            <LinkMaker text="Breed" path="breeds" />
             <LinkMaker text="Products" path="products" />
             <li>
               <Link
@@ -55,7 +56,7 @@ function Navbar() {
                 className="nav-links-mobile"
                 onClick={closeMobileMenu}
               >
-                SING IN
+                SIGN IN
               </Link>
             </li>
           </ul>
@@ -63,7 +64,7 @@ function Navbar() {
           {button && (
             <Link to="signin" className="btn-mobile">
               <Button buttonStyle="btn--outline" link="/signin">
-                SING IN
+                SIGN IN
               </Button>
             </Link>
           )}

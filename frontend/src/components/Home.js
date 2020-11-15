@@ -1,4 +1,4 @@
-import facade from "../facades/fetchFacade";
+import facade from "../facades/fetchJokeFacade";
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 
