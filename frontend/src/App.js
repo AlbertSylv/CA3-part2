@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+  Redirect,
+} from "react-router-dom";
 import Login from "./components/Login";
 import facade from "./facades/LoginFacade";
 import Home from "./components/Home";
 import Breed from "./components/Breed";
 import Signup from "./components/Signup";
+import { setDogs } from "./facades/dogFacade";
+import Dogs from "./components/Dogs";
 
 function App() {
   const [user, setUser] = useState("Loading...");
@@ -40,13 +48,16 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        <Navbar loggedIn={loggedIn} />
         <Switch>
           <Route path="/" exact>
             <Home />
           </Route>
           <Route path="/breeds" exact>
             <Breed />
+          </Route>
+          <Route path="/dogs" exact>
+            <Dogs />
           </Route>
           <Route path="/services" />
           <Route path="/products" />

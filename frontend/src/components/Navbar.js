@@ -3,7 +3,7 @@ import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({ loggedIn }) {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -47,27 +47,46 @@ function Navbar() {
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <LinkMaker text="Home" path="" />
-            <LinkMaker text="Services" path="services" />
             <LinkMaker text="Breed" path="breeds" />
+            {loggedIn ? <LinkMaker text="Your dogs" path="dogs" /> : <></>}
             <LinkMaker text="Products" path="products" />
-            <li>
-              <Link
-                to="/signin"
-                className="nav-links-mobile"
-                onClick={closeMobileMenu}
-              >
-                SIGN IN
-              </Link>
-            </li>
+            {loggedIn ? (
+              <li>
+                <Link
+                  to="/signin"
+                  className="nav-links-mobile"
+                  onClick={closeMobileMenu}
+                >
+                  Logout
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  to="/signin"
+                  className="nav-links-mobile"
+                  onClick={closeMobileMenu}
+                >
+                  SIGN IN
+                </Link>
+              </li>
+            )}
           </ul>
 
-          {button && (
-            <Link to="signin" className="btn-mobile">
-              <Button buttonStyle="btn--outline" link="/signin">
-                SIGN IN
-              </Button>
-            </Link>
-          )}
+          {button &&
+            (loggedIn ? (
+              <Link to="signin" className="btn-mobile">
+                <Button buttonStyle="btn--outline" link="/signin">
+                  Logout
+                </Button>
+              </Link>
+            ) : (
+              <Link to="signin" className="btn-mobile">
+                <Button buttonStyle="btn--outline" link="/signin">
+                  SIGN IN
+                </Button>
+              </Link>
+            ))}
         </div>
       </nav>
     </>
