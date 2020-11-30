@@ -37,7 +37,7 @@ public class DogResource {
 
     @Context
     SecurityContext securityContext;
-        @GET
+    @GET
     @Produces(MediaType.APPLICATION_JSON)              
      public String getRandomBreed() throws IOException, InterruptedException, ExecutionException, TimeoutException {
         String URL = "https://dog.ceo/api/breeds/list/random";
